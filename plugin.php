@@ -3,7 +3,7 @@
 Plugin Name: Don't Log Bots
 Plugin URI: https://github.com/YOURLS/dont-log-bots
 Description: Do not log some bots in stats
-Version: 1.3
+Version: 1.3-elevate.1
 Author: Ozh, Leo Colomb, Suguru Hirahara
 Author URI: http://yourls.org
 */
@@ -234,6 +234,47 @@ function yp_dlb_is_bot() {
         
         // xenu
         'xenu link sleuth',
+
+        // Elevate fork (2026-09-24): entries carried in luixxiul/dont-log-crawlers v1.2 but
+        // missing here, restored so the swap loses no coverage. 'facebot' is lowercased:
+        // upstream-of-upstream stored it as 'Facebot', which could never match a lowercased UA.
+        'applebot',
+        'digg',
+        'facebot',
+        'longurl',
+        'metauri',
+        'ssl-crawler',
+        'subnetsearch',
+        'tweetedtimes',
+
+        // Elevate fork (2026-09-24): AI, search and data crawlers active since 2013.
+        // Deliberately NOT link-preview fetchers (whatsapp, telegrambot, slackbot, discordbot,
+        // linkedinbot): whether those count as clicks is a reporting decision, not a bot one.
+        'gptbot',
+        'chatgpt-user',
+        'oai-searchbot',
+        'claudebot',
+        'claude-user',
+        'claude-searchbot',
+        'anthropic-ai',
+        'bytespider',
+        'perplexitybot',
+        'perplexity-user',
+        'mistralai-user',
+        'cohere-ai',
+        'googleother',
+        'amazonbot',
+        'meta-externalagent',
+        'meta-externalfetcher',
+        'facebookbot',
+        'diffbot',
+        'youbot',
+        'timpibot',
+        'imagesiftbot',
+        'petalbot',
+        'dotbot',
+        'duckduckbot',
+        'barkrowler',
     );
         
     // Check if the current UA string contains a know bot string
