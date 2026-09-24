@@ -3,7 +3,7 @@
 Plugin Name: Don't Log Bots
 Plugin URI: https://github.com/YOURLS/dont-log-bots
 Description: Do not log some bots in stats
-Version: 1.3-elevate.1
+Version: 1.3-elevate.2
 Author: Ozh, Leo Colomb, Suguru Hirahara
 Author URI: http://yourls.org
 */
@@ -275,6 +275,24 @@ function yp_dlb_is_bot() {
         'dotbot',
         'duckduckbot',
         'barkrowler',
+
+        // Elevate fork (2026-09-24, 1.3-elevate.2): link-preview fetchers. Decided with Elevate:
+        // a preview fetch of a forwarded SMS link is not a click. Tokens are the fetchers' own,
+        // never an app name alone - 'viber', 'snapchat' and 'mastodon' also appear in human
+        // in-app browser UAs, so they are deliberately absent. iMessage previews already match
+        // via 'facebookexternalhit' / 'twitterbot'.
+        'whatsapp',
+        'telegrambot',
+        'slackbot',
+        'slack-imgproxy',
+        'discordbot',
+        'linkedinbot',
+        'skypeuripreview',
+        'pinterestbot',
+        'redditbot',
+        'iframely',
+        'embedly',
+        'cardyb',
     );
         
     // Check if the current UA string contains a know bot string
